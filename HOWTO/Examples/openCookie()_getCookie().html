@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+	<meta charset="utf-8" />
+</head>
+
+<script src="../greyw0lf_beta.js"></script>
+
+
+
+<body>
+<html>
+
+	
+	
+</html>
+
+<input id="cookiename" value="COOKIENAME">
+<input id="cookiecontent" value="TYPE COOKIE CONTENT..." style="width:200px;" >
+<input type="button" value="SET COOKIE" onclick='gw_().openCookie(gw_("cookiename").getContent(),gw_("cookiecontent").getContent());alert(gw_("cookiename").getContent()+" NAMED COOKIE CREATED")'>
+<input type="button" value="GET COOKIE" onclick='alert("your cookie content is :"+gw_().getCookie(gw_("cookiename").getContent()))'>
+</body>

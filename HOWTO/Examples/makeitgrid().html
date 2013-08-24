@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+	<meta charset="utf-8" />
+</head>
+
+<script src="../greyw0lf_beta.js"></script>
+
+
+
+<body>
+<html>
+	<h1>Change a cell value and hit "ENTER"</h1>
+	<table id="testtable"></table>
+	
+</html>
+
+<script>
+	gw_("testtable").makeItGrid(5,5,function(row,col,data){
+		alert("CELL ["+row+"/"+col+"] CHANGED");
+	});
+</script>
+</body>
