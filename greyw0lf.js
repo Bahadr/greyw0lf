@@ -337,8 +337,9 @@
 		}
 		
 		if((this.graytimer.enlarge.nh==height)&&(this.graytimer.enlarge.nw==width)){
-		    this.graytimer.enlarge.callback();
-			window.clearInterval(this.graytimer.enlarge.timer);
+		      window.clearInterval(this.graytimer.enlarge.timer);
+		      this.graytimer.enlarge.callback();
+			
 		}
 		
 	
@@ -370,8 +371,8 @@
 		}
 		
 		if((this.graytimer.minimize.nh==height)&&(this.graytimer.minimize.nw==width)){
-			this.graytimer.minimize.callback();
 			window.clearInterval(this.graytimer.minimize.timer);
+			this.graytimer.minimize.callback();
 		}
 	
 	}
