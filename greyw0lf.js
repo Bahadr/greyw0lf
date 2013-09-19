@@ -314,7 +314,7 @@
 	}
 	
 	greywolf.prototype.enlarge=function(newWidth,newHeight,effectInterval,userFunct){
-		if(this.graytimer.minimize.timer!=undefined){
+		if(this.graytimer.minimize!=undefined){
 			window.clearInterval(this.graytimer.minimize.timer);
 		}
 		var targid=this.activeobject.id;
@@ -349,7 +349,7 @@
 	
 	
 	greywolf.prototype.minimize=function(newWidth,newHeight,effectInterval,userFunct){
-		if(this.graytimer.enlarge.timer!=undefined){
+		if(this.graytimer.enlarge!=undefined){
 			window.clearInterval(this.graytimer.enlarge.timer);
 		}
 		var targid=this.activeobject.id;
