@@ -314,7 +314,9 @@
 	}
 	
 	greywolf.prototype.enlarge=function(newWidth,newHeight,effectInterval,userFunct){
-		window.clearInterval(this.graytimer.minimize.timer);
+		if(this.graytimer.minimize.timer!=undefined){
+			window.clearInterval(this.graytimer.minimize.timer);
+		}
 		var targid=this.activeobject.id;
 		this.graytimer["enlarge"]={"callback":userFunct,"nw":newWidth,"nh":newHeight,"timer":window.setInterval(function(){gw_(targid).enlargeAction()},effectInterval)};
 		
@@ -347,7 +349,9 @@
 	
 	
 	greywolf.prototype.minimize=function(newWidth,newHeight,effectInterval,userFunct){
-		window.clearInterval(this.graytimer.enlarge.timer);
+		if(this.graytimer.enlarge.timer!=undefined){
+			window.clearInterval(this.graytimer.enlarge.timer);
+		}
 		var targid=this.activeobject.id;
 		this.graytimer["minimize"]={"callback":userFunct,"nw":newWidth,"nh":newHeight,"timer":window.setInterval(function(){gw_(targid).minimizeAction()},effectInterval)};
 		
