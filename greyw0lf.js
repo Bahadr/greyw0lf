@@ -372,7 +372,7 @@
 		var X;
 		if(this.graytimer.minimize.nw!=false){
 			if(width>this.graytimer.minimize.nw){
-				X=((width+5)<this.graytimer.minimize.nw)?1:5;
+				X=((width-5)<this.graytimer.minimize.nw)?1:5;
 				width=width-X;
 				this.activeobject.style.width=width+"px";
 				
@@ -380,7 +380,7 @@
 		}
 		if(this.graytimer.minimize.nh!=false){
 			if(height>this.graytimer.minimize.nh){
-				X=((height<5)>this.graytimer.minimize.nh)?1:5;
+				X=((height-5)<this.graytimer.minimize.nh)?1:5;
 				height=height-X;
 				this.activeobject.style.height=height+"px";
 			}
