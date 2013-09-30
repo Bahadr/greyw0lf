@@ -318,27 +318,34 @@
 			window.clearInterval(this.graytimer.minimize.timer);
 		}
 		var targid=this.activeobject.id;
-		this.graytimer["enlarge"]={"callback":userFunct,"nw":newWidth,"nh":newHeight,"timer":window.setInterval(function(){gw_(targid).enlargeAction()},effectInterval)};
+		var originalWidth=this.activeobject.style.width.replace("px","")*1;
+		var originalHeight=this.activeobject.style.height.replace("px","")*1;
+		var difference=this.activeobject.offsetWidth-originalWidth;
+		this.graytimer["enlarge"]={"diff":difference,"callback":userFunct,"nw":newWidth,"nh":newHeight,"timer":window.setInterval(function(){gw_(targid).enlargeAction()},effectInterval)};
 		
 	}
 	greywolf.prototype.enlargeAction=function(){
-		var width=this.activeobject.offsetWidth*1;
-		var height=this.activeobject.offsetHeight*1;
-		
+		var width=this.activeobject.offsetWidth-this.graytimer.enlarge.diff;
+		var height=this.activeobject.offsetHeight-this.graytimer.enlarge.diff;
+		var X;
 		if(this.graytimer.enlarge.nw!=false){
 			if(width<this.graytimer.enlarge.nw){
-				width=width+5;
+				X=((width+5)>this.graytimer.enlarge.nw)?1:5;
+				width=width+X;
 				this.activeobject.style.width=width+"px";
+				
 			}
 		}
 		if(this.graytimer.enlarge.nh!=false){
 			if(height<this.graytimer.enlarge.nh){
-				height=height+5;
+				X=((height+5)>this.graytimer.enlarge.nh)?1:5;
+				height=height+X;
 				this.activeobject.style.height=height+"px";
 			}
 		}
 		
-		if((this.graytimer.enlarge.nh==height)&&(this.graytimer.enlarge.nw==width)){
+		this.activeobject.innerHTML="Height:"+height+" - NewHeight : "+this.graytimer.enlarge.nh+" / Width:"+width+" - NewWidth : "+this.graytimer.enlarge.nw;
+		if((height==this.graytimer.enlarge.nh)&&(width==this.graytimer.enlarge.nw)){
 		      window.clearInterval(this.graytimer.enlarge.timer);
 		      this.graytimer.enlarge.callback();
 			
@@ -350,45 +357,46 @@
 	
 	greywolf.prototype.minimize=function(newWidth,newHeight,effectInterval,userFunct){
 		if(this.graytimer.enlarge!=undefined){
-			
 			window.clearInterval(this.graytimer.enlarge.timer);
 		}
-		
 		var targid=this.activeobject.id;
 		var originalWidth=this.activeobject.style.width.replace("px","")*1;
+		var originalHeight=this.activeobject.style.height.replace("px","")*1;
 		var difference=this.activeobject.offsetWidth-originalWidth;
 		this.graytimer["minimize"]={"diff":difference,"callback":userFunct,"nw":newWidth,"nh":newHeight,"timer":window.setInterval(function(){gw_(targid).minimizeAction()},effectInterval)};
 		
 	}
-	
 	greywolf.prototype.minimizeAction=function(){
-		
 		var width=this.activeobject.offsetWidth-this.graytimer.minimize.diff;
 		var height=this.activeobject.offsetHeight-this.graytimer.minimize.diff;
-		
+		var X;
 		if(this.graytimer.minimize.nw!=false){
 			if(width>this.graytimer.minimize.nw){
-				width=width-5;		
+				X=((width+5)<this.graytimer.minimize.nw)?1:5;
+				width=width-X;
 				this.activeobject.style.width=width+"px";
-			
+				
 			}
 		}
 		if(this.graytimer.minimize.nh!=false){
-			
 			if(height>this.graytimer.minimize.nh){
-				height=height-5;
+				X=((height<5)>this.graytimer.minimize.nh)?1:5;
+				height=height-X;
 				this.activeobject.style.height=height+"px";
-				
-				
 			}
 		}
 		
+		
 		if((height==this.graytimer.minimize.nh)&&(width==this.graytimer.minimize.nw)){
-			window.clearInterval(this.graytimer.minimize.timer);
-			this.graytimer.minimize.callback();
+		      window.clearInterval(this.graytimer.minimize.timer);
+		      this.graytimer.minimize.callback();
+			
 		}
+		
 	
 	}
+	
+	
 	
 	greywolf.prototype.move=function(newX,newY,effectInterval,userFunct){
 	
