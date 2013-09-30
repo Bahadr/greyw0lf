@@ -344,7 +344,7 @@
 			}
 		}
 		
-		this.activeobject.innerHTML="Height:"+height+" - NewHeight : "+this.graytimer.enlarge.nh+" / Width:"+width+" - NewWidth : "+this.graytimer.enlarge.nw;
+		
 		if((height==this.graytimer.enlarge.nh)&&(width==this.graytimer.enlarge.nw)){
 		      window.clearInterval(this.graytimer.enlarge.timer);
 		      this.graytimer.enlarge.callback();
