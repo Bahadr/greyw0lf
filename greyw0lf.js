@@ -162,6 +162,7 @@
 			fontFamily="Tahoma";
 			fontSize="12px";
 			overflow="auto";
+			zIndex="9999";
 		}
 		
 		document.body.insertBefore(box,document.body.firstChild);
