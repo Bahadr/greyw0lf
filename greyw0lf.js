@@ -222,7 +222,7 @@
 		parentclass=this;
 		this.tempVar.acUserFunct=userFunct;
 		var targid=this.activeobject.id;
-		
+		this.me().autocomplete="off";
 		this.me().onkeyup=function(){
 			gw_(this).completeMe(file,params);
 		}
